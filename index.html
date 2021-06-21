@@ -31,6 +31,75 @@
     <title>Task Manager</title>
 </head>
 <body>
+
+  <!-- Modal -->
+<div class="modal fade" 
+     id="exampleModal" 
+     tabindex="-1" 
+     aria-labelledby="exampleModalLabel" 
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" 
+        id="exampleModalLabel">
+        Add New Task
+        </h5>
+      </div>
+      <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <label for="imageurl"
+          class="form-label">Image Url</label>
+          <input type="url" 
+          class="form-control" 
+          id="imageurl" 
+          aria-describedby="image url" 
+          placeholder="eg: https://example.com/hello.jpg">
+        </div>
+        <div class="mb-3">
+          <label for="tasktitle" 
+          class="form-label">Task Title</label>
+          <input type="text" 
+          class="form-control" 
+          id="tasktitle" 
+          aria-describedby="task title" 
+          placeholder="eg: Title">
+        </div>
+        <div class="mb-3">
+          <label for="tasktype" 
+          class="form-label">Task Type</label>
+          <input type="text" 
+          class="form-control" 
+          id="tasktype" 
+          aria-describedby="task type" 
+          placeholder="eg: work">
+        </div>
+        <div class="mb-3">
+          <label for="textdescription" 
+          class="form-label">Text Description</label>
+          <textarea rows="6" 
+          class="form-control" 
+          id="taskdescription" 
+          aria-describedby="Task Description" 
+          placeholder="eg: Describe your task in details."></textarea>
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" 
+        class="btn btn-secondary rounded-pill" 
+        data-bs-dismiss="modal">Close</button>
+        <button type="button" 
+        class="btn btn-primary rounded-pill" 
+        onclick="saveChanges()" 
+        data-bs-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand fw-bold text-primary" href="#">TaskY</a>
@@ -48,7 +117,10 @@
               <li class="nav-item">
                 <a class="nav-link active fw-bold" aria-current="page" href="#">home</a></li>
             </ul> 
-            <button type="button" class="btn btn-primary rounded-pill">
+            <button type="button" 
+            class="btn btn-primary rounded-pill" 
+            data-bs-toggle="modal" 
+            data-bs-target="#exampleModal">
               <i class="fas fa-plus"></i>  Add New
             </button>   
             </div>
@@ -72,27 +144,8 @@
                </div>
            </div>
          <!--card-->  
-           <div class="row mt-5">
-             <div class="col-md-6 col-lg-4">
-              <div class="card">
-                <div class="card-header d-flex justify-content-end gap-2">
-                  <button type="button" class="btn btn-outline-info rounded-pill">
-                    <i class="fas fa-pencil-alt"></i></button>
-                  <button type="button" class="btn btn-outline-danger rounded-pill">
-                    <i class="fas fa-trash-alt"></i></button>
-                </div>
-                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" 
-                class="card-img-top" alt="image">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="card-footer">
-                  <button type="button" class="btn btn-outline-primary float-end rounded-pill">Open Task</button>
-                </div>
-              </div>
-             </div>
+           <div class="row mt-5 task_container">
+           
            </div>
            </section>
          
@@ -103,5 +156,8 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.j
 integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
 crossorigin="anonymous">
 </script>
+
+<!--Javascript-->
+<script src="./index.js"></script>
 </body>
 </html>
