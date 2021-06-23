@@ -1,15 +1,9 @@
 const taskContainer = document.querySelector(".task_container");
 
-const saveChanges = () =>{
-    const taskData ={
-        id: `${Date.now()}`,//unique number for id
-        imageurl: document.getElementById("imageurl").value,
-        tasktitle: document.getElementById("tasktitle").value,
-        tasktype: document.getElementById("tasktype").value,
-        taskdescription: document.getElementById("taskdescription").value,
-    };
-    const newCard =`
-    <div class="col-md-6 col-lg-4" id=${taskData.id}>
+const globalStore = [];
+
+const generateNewCard = (taskData) => `
+<div class="col-md-6 col-lg-4" id=${taskData.id}>
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-end gap-2">
         <button type="button" class="btn btn-outline-info rounded-pill">
@@ -30,7 +24,33 @@ const saveChanges = () =>{
     </div>
    </div>
  </div>
-    `;
+`;
 
-    taskContainer.insertAdjacentHTML("beforeend", newCard)
+const loadInitialCardData = () =>{
+  const getCardData = localStorage.getItem("tasky");
+  
+  const {cards} = JSON.parse(getCardData);
+  cards.map((cardObject) => {
+    taskContainer.insertAdjacentHTML("beforeend", generateNewCard(cardObject));
+
+    globalStore.push(cardObject);
+
+  })
+}
+
+const saveChanges = () =>{
+    const taskData ={
+        id: `${Date.now()}`,//unique number for id
+        imageurl: document.getElementById("imageurl").value,
+        tasktitle: document.getElementById("tasktitle").value,
+        tasktype: document.getElementById("tasktype").value,
+        taskdescription: document.getElementById("taskdescription").value,
+    };
+    
+
+    taskContainer.insertAdjacentHTML("beforeend", generateNewCard(taskData));
+
+    globalStore.push(taskData);
+
+    localStorage.setItem("tasky", JSON.stringify({cards:globalStore})); // accepts an object
 };
