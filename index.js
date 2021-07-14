@@ -62,7 +62,7 @@ const htmlModalContent = ({ id,imageUrl,taskTitle,taskDescription,taskType }) =>
 
 const loadInitialTaskCards = () => {
   // access localstorage
-  const getInitialData = localStorage.getItem("taskY"); // null
+  const getInitialData = localStorage.getItem("TaskY"); // null
   if (!getInitialData) return;
 
   // convert stringified-object to object
@@ -77,7 +77,7 @@ const loadInitialTaskCards = () => {
 };
 
 const updateLocalStorage = () =>
-  localStorage.setItem("tasky", JSON.stringify({ cards: globalStore }));
+  localStorage.setItem("TaskY", JSON.stringify({ cards: globalStore }));
 
 const saveChanges = () => {
   const taskData = {
