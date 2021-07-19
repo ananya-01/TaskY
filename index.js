@@ -156,6 +156,8 @@ const editCard = (event) => {
     "onclick",
     "saveEditchanges.apply(this, arguments)"
   );
+  submitButton.removeAttribute("data-bs-toggle");
+  submitButton.removeAttribute("data-bs-target");
   submitButton.innerHTML = "Save Changes";
 };
 
@@ -204,6 +206,9 @@ const saveEditchanges = (event) => {
   taskType.setAttribute("contenteditable", "false");
   
   submitButton.removeAttribute("onclick");
+  submitButton.setAttribute("onclick", "openTask.apply(this, arguments)");
+  submitButton.setAttribute("data-bs-toggle", "modal");
+  submitButton.setAttribute("data-bs-target", "#showTask");
   submitButton.innerHTML = "Open Task";
 };
 
